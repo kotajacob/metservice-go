@@ -76,8 +76,8 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-func TestGetForecast(t *testing.T) {
-	forecast, err := localClient.GetForecast(context.Background(), "Dunedin")
+func TestForecast(t *testing.T) {
+	forecast, err := localClient.Forecast(context.Background(), "Dunedin")
 	if err != nil {
 		t.Errorf("%v", err)
 		return

@@ -85,7 +85,7 @@ func (e StatusError) Error() string {
 
 // GetForecast returns a Forecast for a given location using a context. The
 // location string should be capitalized - i.e. Dunedin.
-func (c *Client) GetForecast(ctx context.Context, location string) (Forecast, error) {
+func (c *Client) Forecast(ctx context.Context, location string) (Forecast, error) {
 	reqPath := fmt.Sprintf("/localForecast%s", location)
 	req, err := http.NewRequest("GET", c.BaseURL+reqPath, nil)
 	if err != nil {
