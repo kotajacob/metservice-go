@@ -45,7 +45,7 @@ type DayPartTime struct {
 	IconType     *string `json:"iconType,omitempty"`
 }
 
-// Forecast gets a Forecast for a given location using a context. The location
+// GetForecast gets a Forecast for a given location using a context. The location
 // string should be capitalized - i.e. Dunedin. A list of possible locations
 // can be found here https://www.metservice.com/towns-cities/
 func (c *Client) GetForecast(ctx context.Context, location string) (*Forecast, *http.Response, error) {

@@ -19,7 +19,7 @@ type RiseSet struct {
 	SunSet     *Timestamp `json:"sunSetISO,omitempty"`
 }
 
-// RiseSet gets a RiseSet representing the sun/moon rise and set times for
+// GetRiseSet gets a RiseSet representing the sun/moon rise and set times for
 // the current day for a given location. The location string should be
 // capitalized - i.e. Dunedin. A list of possible locations can be found here
 // https://www.metservice.com/towns-cities/
