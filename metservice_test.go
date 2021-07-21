@@ -7,14 +7,8 @@ import (
 	"net/url"
 	"reflect"
 	"testing"
-	"time"
 
 	"github.com/google/go-cmp/cmp"
-)
-
-var (
-	referenceTime    = time.Date(2006, time.January, 02, 15, 04, 05, 0, time.UTC)
-	referenceTimeStr = `"2006-01-02T15:04:05Z"`
 )
 
 // setup sets up a test HTTP server along with a Client that is configured to
