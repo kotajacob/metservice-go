@@ -45,7 +45,7 @@ type DayPartTime struct {
 	IconType     *string `json:"iconType,omitempty"`
 }
 
-// Rises represents the sun/moon rise and set times in a ForecastDay.
+// DayRiseSet represents the sun/moon rise and set times in a ForecastDay.
 type DayRiseSet struct {
 	Date       *Timestamp `json:"dayISO,omitempty"`
 	FirstLight *Timestamp `json:"firstLightISO,omitempty"`
