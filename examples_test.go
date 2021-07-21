@@ -25,9 +25,28 @@ func ExampleForecast() {
 	}
 }
 
+func ExampleRiseSet() {
+	client := NewClient()
+	ctx := context.Background()
+
+	riseSet, _, err := client.GetRiseSet(ctx, "Dunedin")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("sunrise at %v\n", *riseSet.SunRise)
+}
+
 func TestExampleForecast(t *testing.T) {
 	if !testing.Verbose() {
 		return
 	}
 	ExampleForecast()
+}
+
+func TestExampleRiseSet(t *testing.T) {
+	if !testing.Verbose() {
+		return
+	}
+	ExampleRiseSet()
 }
