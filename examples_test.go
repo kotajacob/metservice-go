@@ -3,6 +3,7 @@ package metservice
 import (
 	"context"
 	"fmt"
+	"testing"
 )
 
 func ExampleForecast() {
@@ -15,4 +16,18 @@ func ExampleForecast() {
 		return
 	}
 	fmt.Println(*forecast.LocationIPS)
+	for _, day := range forecast.Days {
+		fmt.Printf("%v\nforecast: %v\nmax: %vC\nmin: %vC\n\n",
+			*day.Date,
+			*day.ForecastWord,
+			*day.Max,
+			*day.Min)
+	}
+}
+
+func TestExampleForecast(t *testing.T) {
+	if !testing.Verbose() {
+		return
+	}
+	ExampleForecast()
 }

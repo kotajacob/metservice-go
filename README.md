@@ -24,4 +24,11 @@ func main() {
 		return
 	}
 	fmt.Println(*forecast.LocationIPS)
+	for _, day := range forecast.Days {
+		fmt.Printf("%v\nforecast: %v\nmax: %vC\nmin: %vC\n\n",
+			*day.Date,
+			*day.ForecastWord,
+			*day.Max,
+			*day.Min)
+	}
 }
