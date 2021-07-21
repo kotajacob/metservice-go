@@ -21,6 +21,24 @@ func TestForecast_Marshal(t *testing.T) {
 				IssuedAt:     &Timestamp{referenceTime},
 				Max:          Int(2),
 				Min:          Int(1),
+				Part: &DayPart{
+					Afternoon: &DayPartTime{
+						ForecastWord: String("aaa"),
+						IconType:     String("bbb"),
+					},
+					Evening: &DayPartTime{
+						ForecastWord: String("aaa"),
+						IconType:     String("bbb"),
+					},
+					Morning: &DayPartTime{
+						ForecastWord: String("aaa"),
+						IconType:     String("bbb"),
+					},
+					Overnight: &DayPartTime{
+						ForecastWord: String("aaa"),
+						IconType:     String("bbb"),
+					},
+				},
 				RiseSet: &DayRiseSet{
 					Date:       &Timestamp{referenceTime},
 					FirstLight: &Timestamp{referenceTime},
@@ -52,6 +70,24 @@ func TestForecast_Marshal(t *testing.T) {
 			"issuedAtISO": ` + referenceTimeStr + `,
 			"max": "2",
 			"min": "1",
+			"partDayData": {
+				"afternoon": {
+					"forecastWord": "aaa",
+					"iconType": "bbb"
+				},
+				"evening": {
+					"forecastWord": "aaa",
+					"iconType": "bbb"
+				},
+				"morning": {
+					"forecastWord": "aaa",
+					"iconType": "bbb"
+				},
+				"overnight": {
+					"forecastWord": "aaa",
+					"iconType": "bbb"
+				}
+			},
 			"riseSet": {
 				"dayISO": ` + referenceTimeStr + `,
 				"firstLightISO": ` + referenceTimeStr + `,

@@ -17,21 +17,35 @@ type Forecast struct {
 	SundayForcastWord    *string       `json:"sundayForecastWord,omitempty"`
 }
 
-// ForecastDay represents a day in a forecast.
+// ForecastDay represents a day in a Forecast.
 type ForecastDay struct {
-	// TODO: Implement partDayData
 	Date         *Timestamp  `json:"dateISO,omitempty"`
 	Forecast     *string     `json:"forecast,omitempty"`
 	ForecastWord *string     `json:"forecastWord,omitempty"`
 	IssuedAt     *Timestamp  `json:"issuedAtISO,omitempty"`
 	Max          *int        `json:"max,string,omitempty"`
 	Min          *int        `json:"min,string,omitempty"`
+	Part         *DayPart    `json:"partDayData,omitempty"`
 	RiseSet      *DayRiseSet `json:"riseSet,omitempty"`
 	Source       *string     `json:"source,omitempty"`
 	SourceTemps  *string     `json:"sourceTemps,omitempty"`
 }
 
-// Rises represents the sun/moon rise and set times in a day.
+// DayPart contains DayPartTimes for parts of a ForecastDay.
+type DayPart struct {
+	Afternoon *DayPartTime `json:"afternoon,omitempty"`
+	Evening   *DayPartTime `json:"evening,omitempty"`
+	Morning   *DayPartTime `json:"morning,omitempty"`
+	Overnight *DayPartTime `json:"overnight,omitempty"`
+}
+
+// DayPartTime contains a forecast word and icon type.
+type DayPartTime struct {
+	ForecastWord *string `json:"forecastWord,omitempty"`
+	IconType     *string `json:"iconType,omitempty"`
+}
+
+// Rises represents the sun/moon rise and set times in a ForecastDay.
 type DayRiseSet struct {
 	Date       *Timestamp `json:"dayISO,omitempty"`
 	FirstLight *Timestamp `json:"firstLightISO,omitempty"`
