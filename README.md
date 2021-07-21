@@ -22,7 +22,7 @@ func main() {
 	client := NewClient()
 	ctx := context.Background()
 
-	forecast, _, err := client.Forecast(ctx, "Dunedin")
+	forecast, _, err := client.GetForecast(ctx, "Dunedin")
 	if err != nil {
 		fmt.Println(err)
 		return
