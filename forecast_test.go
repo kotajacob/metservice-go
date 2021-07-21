@@ -9,7 +9,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestForecast_Marshal(t *testing.T) {
+func TestGetForecast_Marshal(t *testing.T) {
 	testJSONMarshal(t, &Forecast{}, "{}")
 
 	u := &Forecast{
@@ -39,7 +39,7 @@ func TestForecast_Marshal(t *testing.T) {
 						IconType:     String("bbb"),
 					},
 				},
-				RiseSet: &DayRiseSet{
+				RiseSet: &RiseSet{
 					Date:       &Timestamp{referenceTime},
 					FirstLight: &Timestamp{referenceTime},
 					ID:         String("aaa"),
@@ -113,7 +113,7 @@ func TestForecast_Marshal(t *testing.T) {
 	testJSONMarshal(t, u, want)
 }
 
-func TestForecast_Get(t *testing.T) {
+func TestGetForecast_Get(t *testing.T) {
 	client, mux, teardown := setup()
 	defer teardown()
 
@@ -122,13 +122,13 @@ func TestForecast_Get(t *testing.T) {
 	})
 
 	ctx := context.Background()
-	forecast, _, err := client.Forecast(ctx, "Dunedin")
+	forecast, _, err := client.GetForecast(ctx, "Dunedin")
 	if err != nil {
 		t.Errorf("Client.Forecast returned error: %v", err)
 	}
 
 	want := &Forecast{LocationIPS: String("DUNEDIN")}
 	if !cmp.Equal(forecast, want) {
-		t.Errorf("Client.Forecast returned %+v, want %+v", forecast, want)
+		t.Errorf("Client.GetForecast returned %+v, want %+v", forecast, want)
 	}
 }
