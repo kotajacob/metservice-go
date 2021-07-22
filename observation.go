@@ -37,6 +37,31 @@ type ObservationTwentyFourHour struct {
 	Rainfall   *float64 `json:"rainfall,string,omitempty"`
 }
 
+// ObservationForecastHours represents observation and forecast data hourly,
+// usually for around 48 hours with 9 or 10 observations and the rest being
+// forecasts. I felt some fields were redundant so I ignored them.
+type ObservationForecastHours struct {
+	Observations          []ObservationHour `json:"actualData,omitempty"`
+	Forecasts             []ForecastHour    `json:"forecastData,omitempty"`
+	Count                 *int              `json:"dataPointCount,omitempty"`
+	WindSpeed             *int              `json:"latestObsWindSpeed,omitempty"`
+	Location              *string           `json:"location,omitempty"`
+	LocationName          *string           `json:"locationName,omitempty"`
+	RainfallTotalForecast *float64          `json:"rainfallTotalForecast,string,omitempty"`
+	RainfallTotalObserved *float64          `json:"rainfallTotalObserved,string,omitempty"`
+}
+
+// ObservationHour represents observation data for a specific hour. This data
+// is obtained from GetObservationForecastHours.
+type ObservationHour struct {
+	Date          *Timestamp `json:"dateISO,omitempty"`
+	Offset        *int       `json:"offset,omitempty"`
+	Rainfall      *float64   `json:"rainfall,string,omitempty"`
+	Temp          *float64   `json:"temperature,string,omitempty"`
+	WindDirection *string    `json:"windDirection,omitempty"`
+	WindSpeed     *int       `json:"windSpeed,string,omitempty"`
+}
+
 // ObservationOneMin represents observation data updated to the minute. It has
 // less detail than the daily observations.
 type ObservationOneMin struct {
@@ -61,6 +86,19 @@ func (c *Client) GetObservation(ctx context.Context, location string) (*Observat
 		return &Observation{}, rsp, err
 	}
 	return observation, rsp, nil
+}
+
+// GetObservationForecastHours gets an ObservationForecastHours containing
+// hourly observations and forecasts for about a 48 hour period for a specific
+// location.
+func (c *Client) GetObservationForecastHours(ctx context.Context, location string) (*ObservationForecastHours, *http.Response, error) {
+	ofh := new(ObservationForecastHours)
+	path := fmt.Sprintf("hourlyObsAndForecast_%s", location)
+	rsp, err := c.Do(ctx, path, ofh)
+	if err != nil {
+		return &ObservationForecastHours{}, rsp, err
+	}
+	return ofh, rsp, nil
 }
 
 // GetObservationOneMin gets an Observation for a given location.

@@ -31,6 +31,18 @@ type ForecastDay struct {
 	SourceTemps  *string    `json:"sourceTemps,omitempty"`
 }
 
+// ForecastHour represents forecast data for a specific hour. This data
+// is obtained from GetObservationForecastHours.
+type ForecastHour struct {
+	Date          *Timestamp `json:"dateISO,omitempty"`
+	Humidity      *int       `json:"humidity,string,omitempty"`
+	Offset        *int       `json:"offset,omitempty"`
+	Rainfall      *float64   `json:"rainfall,string,omitempty"`
+	Temp          *int       `json:"temperature,string,omitempty"`
+	WindDirection *string    `json:"windDirection,omitempty"`
+	WindSpeed     *int       `json:"windSpeed,string,omitempty"`
+}
+
 // DayPart contains DayPartTimes for parts of a ForecastDay.
 type DayPart struct {
 	Afternoon *DayPartTime `json:"afternoon,omitempty"`
