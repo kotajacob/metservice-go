@@ -63,12 +63,40 @@ func TestGetObservation_Marshal(t *testing.T) {
 	testJSONMarshal(t, u, want)
 }
 
+func TestGetObservationOneMin_Marshal(t *testing.T) {
+	testJSONMarshal(t, &ObservationOneMin{}, "{}")
+
+	u := &ObservationOneMin{
+		ClothingLayers:   Int(1),
+		Current:          Bool(true),
+		Past:             String("a"),
+		Rainfall:         Float64(2.2),
+		RelativeHumidity: Int(3),
+		Status:           String("b"),
+		Date:             &Timestamp{referenceTime},
+		WindProofLayers:  Int(4),
+	}
+
+	want := `{
+	"clothingLayers": "1",
+	"isObservationCurrent": "true",
+	"past": "a",
+	"rainfall": "2.2",
+	"relativeHumidity": "3",
+	"status": "b",
+	"timeISO": ` + referenceTimeStr + `,
+	"windProofLayers": "4"
+}`
+
+	testJSONMarshal(t, u, want)
+}
+
 func TestGetObservation_Get(t *testing.T) {
 	client, mux, teardown := setup()
 	defer teardown()
 
 	mux.HandleFunc("/localObs_Dunedin", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, `{"ID": "DUNEDIN"}`)
+		fmt.Fprint(w, `{"id": "DUNEDIN"}`)
 	})
 
 	ctx := context.Background()
@@ -80,5 +108,25 @@ func TestGetObservation_Get(t *testing.T) {
 	want := &Observation{ID: String("DUNEDIN")}
 	if !cmp.Equal(observation, want) {
 		t.Errorf("Client.GetObservation returned %+v, want %+v", observation, want)
+	}
+}
+
+func TestGetObservationOneMin_Get(t *testing.T) {
+	client, mux, teardown := setup()
+	defer teardown()
+
+	mux.HandleFunc("/oneMinObs_Dunedin", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, `{"status": "DUNEDIN"}`)
+	})
+
+	ctx := context.Background()
+	observation, _, err := client.GetObservationOneMin(ctx, "Dunedin")
+	if err != nil {
+		t.Errorf("Client.GetObservationOneMin returned error: %v", err)
+	}
+
+	want := &ObservationOneMin{Status: String("DUNEDIN")}
+	if !cmp.Equal(observation, want) {
+		t.Errorf("Client.GetObservationOneMin returned %+v, want %+v", observation, want)
 	}
 }

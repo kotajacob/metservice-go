@@ -91,7 +91,7 @@ func TestGetForecast_Marshal(t *testing.T) {
 			"riseSet": {
 				"dayISO": ` + referenceTimeStr + `,
 				"firstLightISO": ` + referenceTimeStr + `,
-				"ID": "aaa",
+				"id": "aaa",
 				"lastLightISO": ` + referenceTimeStr + `,
 				"location": "bbb",
 				"MoonRiseISO": ` + referenceTimeStr + `,

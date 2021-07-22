@@ -37,15 +37,41 @@ type ObservationTwentyFourHour struct {
 	Rainfall   *float64 `json:"rainfall,string,omitempty"`
 }
 
-// GetObservation gets an Observation for a given location. The location string
-// should be capitalized - i.e. Dunedin. A list of possible locations can be
-// found here https://www.metservice.com/towns-cities/
+// ObservationOneMin represents observation data updated to the minute. It has
+// less detail than the daily observations.
+type ObservationOneMin struct {
+	ClothingLayers   *int       `json:"clothingLayers,string,omitempty"`
+	Current          *bool      `json:"isObservationCurrent,string,omitempty"`
+	Past             *string    `json:"past,omitempty"`
+	Rainfall         *float64   `json:"rainfall,string,omitempty"`
+	RelativeHumidity *int       `json:"relativeHumidity,string,omitempty"`
+	Status           *string    `json:"status,omitempty"`
+	Date             *Timestamp `json:"timeISO,omitempty"`
+	WindProofLayers  *int       `json:"windProofLayers,string,omitempty"`
+}
+
+// GetObservation gets an Observation for a given location.
+// The location string should be capitalized - i.e. Dunedin. A list of possible
+// locations can be found here https://www.metservice.com/towns-cities/
 func (c *Client) GetObservation(ctx context.Context, location string) (*Observation, *http.Response, error) {
 	observation := new(Observation)
 	path := fmt.Sprintf("localObs_%s", location)
 	rsp, err := c.Do(ctx, path, observation)
 	if err != nil {
 		return &Observation{}, rsp, err
+	}
+	return observation, rsp, nil
+}
+
+// GetObservationOneMin gets an Observation for a given location.
+// The location string should be capitalized - i.e. Dunedin. A list of possible
+// locations can be found here https://www.metservice.com/towns-cities/
+func (c *Client) GetObservationOneMin(ctx context.Context, location string) (*ObservationOneMin, *http.Response, error) {
+	observation := new(ObservationOneMin)
+	path := fmt.Sprintf("oneMinObs_%s", location)
+	rsp, err := c.Do(ctx, path, observation)
+	if err != nil {
+		return &ObservationOneMin{}, rsp, err
 	}
 	return observation, rsp, nil
 }
