@@ -38,14 +38,14 @@ func ExampleRiseSet() {
 }
 
 func TestExampleForecast(t *testing.T) {
-	if !testing.Verbose() {
+	if !testing.Short() {
 		return
 	}
 	ExampleForecast()
 }
 
 func TestExampleRiseSet(t *testing.T) {
-	if !testing.Verbose() {
+	if !testing.Short() {
 		return
 	}
 	ExampleRiseSet()
