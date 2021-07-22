@@ -1,4 +1,4 @@
-# metservice-go [![godocs.io](https://godocs.io/git.sr.ht/~kota/metservice-go?status.svg)](https://godocs.io/git.sr.ht/~kota/metservice-go)
+# metservice-go [![godocs.io](https://godocs.io/git.sr.ht/~kota/metservice-go?status.svg)](https://godocs.io/git.sr.ht/~kota/metservice-go) [![builds.sr.ht status](https://builds.sr.ht/~kota/metservice-go.svg)](https://builds.sr.ht/~kota/metservice-go)
 
 A go library for reading weather data from
 [Metservice.](https://www.metservice.com/) Unfortunately this API isn't
