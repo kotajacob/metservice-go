@@ -76,6 +76,10 @@ func (c *Client) Do(ctx context.Context, path string, v interface{}) (*http.Resp
 // to store v and returns a pointer to it.
 func Int(v int) *int { return &v }
 
+// Float64 is a helper routine that allocates a new float64 value
+// to store v and returns a pointer to it.
+func Float64(v float64) *float64 { return &v }
+
 // String is a helper routine that allocates a new string value
 // to store v and returns a pointer to it.
 func String(v string) *string { return &v }
