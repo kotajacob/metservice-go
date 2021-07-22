@@ -124,7 +124,7 @@ func TestGetForecast_Get(t *testing.T) {
 	ctx := context.Background()
 	forecast, _, err := client.GetForecast(ctx, "Dunedin")
 	if err != nil {
-		t.Errorf("Client.Forecast returned error: %v", err)
+		t.Errorf("Client.GetForecast returned error: %v", err)
 	}
 
 	want := &Forecast{LocationIPS: String("DUNEDIN")}
