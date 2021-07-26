@@ -1,3 +1,4 @@
+// metservice is a library for reading weather data from Metservice.
 package metservice
 
 import (
