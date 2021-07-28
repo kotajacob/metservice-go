@@ -6,6 +6,10 @@ documented and probably not even intended for public usage. Reading through the
 godocs documentation will give you an idea of the values the API will return,
 but the best way to figure it out is just messing with it a bit.
 
+For a longer more practical example see
+[metweather](https://git.sr.ht/~kota/metweather) a cli app built with this
+library.
+
 Discussion and patches can be found [here](https://lists.sr.ht/~kota/public-inbox).
 
 ## Example
