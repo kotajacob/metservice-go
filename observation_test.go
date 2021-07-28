@@ -54,8 +54,8 @@ func TestGetObservation_Marshal(t *testing.T) {
 	},
 	"twentyFourHour" : {
 		"dateTime": "aa",
-		"maxTemp": "11",
-		"minTemp": "22",
+		"maxTemp": 11,
+		"minTemp": 22,
 		"rainfall": "3.3"
 	}
 }`
@@ -79,7 +79,7 @@ func TestGetObservationOneMin_Marshal(t *testing.T) {
 
 	want := `{
 	"clothingLayers": "1",
-	"isObservationCurrent": "true",
+	"isObservationCurrent": true,
 	"past": "a",
 	"rainfall": "2.2",
 	"relativeHumidity": "3",
