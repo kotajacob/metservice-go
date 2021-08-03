@@ -17,7 +17,7 @@ func TestGetObservation_Marshal(t *testing.T) {
 		Location:   String("b"),
 		LocationID: Int(1),
 		ThreeHour: &ObservationThreeHour{
-			ClothingLayers:  Int(11),
+			ClothingLayers:  String("11"),
 			Date:            &Timestamp{referenceTime},
 			Humidity:        Int(22),
 			Pressure:        String("aa"),
@@ -67,7 +67,7 @@ func TestGetObservationOneMin_Marshal(t *testing.T) {
 	testJSONMarshal(t, &ObservationOneMin{}, "{}")
 
 	u := &ObservationOneMin{
-		ClothingLayers:   Int(1),
+		ClothingLayers:   String("1"),
 		Current:          Bool(true),
 		Past:             String("a"),
 		Rainfall:         Float64(2.2),

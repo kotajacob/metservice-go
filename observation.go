@@ -17,7 +17,7 @@ type Observation struct {
 
 // ObservationThreeHour represents observation data updated every 3 hours.
 type ObservationThreeHour struct {
-	ClothingLayers  *int       `json:"clothingLayers,string,omitempty"`
+	ClothingLayers  *string    `json:"clothingLayers,omitempty"`
 	Date            *Timestamp `json:"dateTimeISO,omitempty"`
 	Humidity        *int       `json:"humidity,string,omitempty"`
 	Pressure        *string    `json:"pressure,omitempty"`
@@ -65,7 +65,7 @@ type ObservationHour struct {
 // ObservationOneMin represents observation data updated to the minute. It has
 // less detail than the daily observations.
 type ObservationOneMin struct {
-	ClothingLayers   *int       `json:"clothingLayers,string,omitempty"`
+	ClothingLayers   *string    `json:"clothingLayers,omitempty"`
 	Current          *bool      `json:"isObservationCurrent,omitempty"`
 	Past             *string    `json:"past,omitempty"`
 	Rainfall         *float64   `json:"rainfall,string,omitempty"`
