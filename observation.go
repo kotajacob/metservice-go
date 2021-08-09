@@ -8,71 +8,71 @@ import (
 
 // Observation represents a recent metservice observation.
 type Observation struct {
-	ID             *string                    `json:"id,omitempty"`
-	Location       *string                    `json:"location,omitempty"`
-	LocationID     *int                       `json:"locationId,string,omitempty"`
-	ThreeHour      *ObservationThreeHour      `json:"threeHour,omitempty"`
-	TwentyFourHour *ObservationTwentyFourHour `json:"twentyFourHour,omitempty"`
+	ID             *string                    `json:"id"`
+	Location       *string                    `json:"location"`
+	LocationID     *int                       `json:"locationId,string"`
+	ThreeHour      *ObservationThreeHour      `json:"threeHour"`
+	TwentyFourHour *ObservationTwentyFourHour `json:"twentyFourHour"`
 }
 
 // ObservationThreeHour represents observation data updated every 3 hours.
 type ObservationThreeHour struct {
-	ClothingLayers  *string    `json:"clothingLayers,omitempty"`
-	Date            *Timestamp `json:"dateTimeISO,omitempty"`
-	Humidity        *int       `json:"humidity,string,omitempty"`
-	Pressure        *string    `json:"pressure,omitempty"`
-	Rainfall        *float64   `json:"rainfall,string,omitempty"`
-	Temp            *int       `json:"temp,string,omitempty"`
-	WindChill       *int       `json:"windChill,string,omitempty"`
-	WindDirection   *string    `json:"windDirection,omitempty"`
-	WindProofLayers *int       `json:"windProofLayers,string,omitempty"`
-	WindSpeed       *int       `json:"windSpeed,string,omitempty"`
+	ClothingLayers  *string    `json:"clothingLayers"`
+	Date            *Timestamp `json:"dateTimeISO"`
+	Humidity        *int       `json:"humidity,string"`
+	Pressure        *string    `json:"pressure"`
+	Rainfall        *float64   `json:"rainfall,string"`
+	Temp            *int       `json:"temp,string"`
+	WindChill       *int       `json:"windChill,string"`
+	WindDirection   *string    `json:"windDirection"`
+	WindProofLayers *int       `json:"windProofLayers,string"`
+	WindSpeed       *int       `json:"windSpeed,string"`
 }
 
 // ObservationTwentyFourHour represents observation data updated day.
 type ObservationTwentyFourHour struct {
-	DatePretty *string  `json:"dateTime,omitempty"`
-	Max        *int     `json:"maxTemp,omitempty"`
-	Min        *int     `json:"minTemp,omitempty"`
-	Rainfall   *float64 `json:"rainfall,string,omitempty"`
+	DatePretty *string  `json:"dateTime"`
+	Max        *int     `json:"maxTemp"`
+	Min        *int     `json:"minTemp"`
+	Rainfall   *float64 `json:"rainfall,string"`
 }
 
 // ObservationForecastHours represents observation and forecast data hourly,
 // usually for around 48 hours with 9 or 10 observations and the rest being
 // forecasts. I felt some fields were redundant so I ignored them.
 type ObservationForecastHours struct {
-	Observations          []ObservationHour `json:"actualData,omitempty"`
-	Forecasts             []ForecastHour    `json:"forecastData,omitempty"`
-	Count                 *int              `json:"dataPointCount,omitempty"`
-	WindSpeed             *int              `json:"latestObsWindSpeed,omitempty"`
-	Location              *string           `json:"location,omitempty"`
-	LocationName          *string           `json:"locationName,omitempty"`
-	RainfallTotalForecast *float64          `json:"rainfallTotalForecast,omitempty"`
-	RainfallTotalObserved *float64          `json:"rainfallTotalObserved,omitempty"`
+	Observations          []ObservationHour `json:"actualData"`
+	Forecasts             []ForecastHour    `json:"forecastData"`
+	Count                 *int              `json:"dataPointCount"`
+	WindSpeed             *int              `json:"latestObsWindSpeed"`
+	Location              *string           `json:"location"`
+	LocationName          *string           `json:"locationName"`
+	RainfallTotalForecast *float64          `json:"rainfallTotalForecast"`
+	RainfallTotalObserved *float64          `json:"rainfallTotalObserved"`
 }
 
 // ObservationHour represents observation data for a specific hour. This data
 // is obtained from GetObservationForecastHours.
 type ObservationHour struct {
-	Date          *Timestamp `json:"dateISO,omitempty"`
-	Offset        *int       `json:"offset,omitempty"`
-	Rainfall      *float64   `json:"rainfall,string,omitempty"`
-	Temp          *float64   `json:"temperature,string,omitempty"`
-	WindDirection *string    `json:"windDirection,omitempty"`
-	WindSpeed     *int       `json:"windSpeed,string,omitempty"`
+	Date          *Timestamp `json:"dateISO"`
+	Offset        *int       `json:"offset"`
+	Rainfall      *float64   `json:"rainfall,string"`
+	Temp          *float64   `json:"temperature,string"`
+	WindDirection *string    `json:"windDirection"`
+	WindSpeed     *int       `json:"windSpeed,string"`
 }
 
 // ObservationOneMin represents observation data updated to the minute. It has
 // less detail than the daily observations.
 type ObservationOneMin struct {
-	ClothingLayers   *string    `json:"clothingLayers,omitempty"`
-	Current          *bool      `json:"isObservationCurrent,omitempty"`
-	Past             *string    `json:"past,omitempty"`
-	Rainfall         *float64   `json:"rainfall,string,omitempty"`
-	RelativeHumidity *int       `json:"relativeHumidity,string,omitempty"`
-	Status           *string    `json:"status,omitempty"`
-	Date             *Timestamp `json:"timeISO,omitempty"`
-	WindProofLayers  *int       `json:"windProofLayers,string,omitempty"`
+	ClothingLayers   *string    `json:"clothingLayers"`
+	Current          *bool      `json:"isObservationCurrent"`
+	Past             *string    `json:"past"`
+	Rainfall         *float64   `json:"rainfall,string"`
+	RelativeHumidity *int       `json:"relativeHumidity,string"`
+	Status           *string    `json:"status"`
+	Date             *Timestamp `json:"timeISO"`
+	WindProofLayers  *int       `json:"windProofLayers,string"`
 }
 
 // GetObservation gets an Observation for a given location.

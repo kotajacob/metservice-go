@@ -8,15 +8,15 @@ import (
 
 // RiseSet represents the sun/moon rise and set times for a day.
 type RiseSet struct {
-	Date       *Timestamp `json:"dayISO,omitempty"`
-	FirstLight *Timestamp `json:"firstLightISO,omitempty"`
-	ID         *string    `json:"id,omitempty"`
-	LastLight  *Timestamp `json:"lastLightISO,omitempty"`
-	Location   *string    `json:"location,omitempty"`
-	MoonRise   *Timestamp `json:"moonRiseISO,omitempty"`
-	MoonSet    *Timestamp `json:"moonSetISO,omitempty"`
-	SunRise    *Timestamp `json:"sunRiseISO,omitempty"`
-	SunSet     *Timestamp `json:"sunSetISO,omitempty"`
+	Date       *Timestamp `json:"dayISO"`
+	FirstLight *Timestamp `json:"firstLightISO"`
+	ID         *string    `json:"id"`
+	LastLight  *Timestamp `json:"lastLightISO"`
+	Location   *string    `json:"location"`
+	MoonRise   *Timestamp `json:"moonRiseISO"`
+	MoonSet    *Timestamp `json:"moonSetISO"`
+	SunRise    *Timestamp `json:"sunRiseISO"`
+	SunSet     *Timestamp `json:"sunSetISO"`
 }
 
 // GetRiseSet gets a RiseSet representing the sun/moon rise and set times for

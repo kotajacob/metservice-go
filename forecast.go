@@ -9,52 +9,52 @@ import (
 // Forecast represents a metservice forecast.
 type Forecast struct {
 	// TODO: Implement targeting field
-	Days                 []ForecastDay `json:"days,omitempty"`
-	LocationGFS          *int          `json:"locationGFS,string,omitempty"`
-	LocationIPS          *string       `json:"locationIPS,omitempty"`
-	LocationWASP         *string       `json:"locationWASP,omitempty"`
-	SaturdayForecastWord *string       `json:"saturdayForecastWord,omitempty"`
-	SundayForcastWord    *string       `json:"sundayForecastWord,omitempty"`
+	Days                 []ForecastDay `json:"days"`
+	LocationGFS          *int          `json:"locationGFS,string"`
+	LocationIPS          *string       `json:"locationIPS"`
+	LocationWASP         *string       `json:"locationWASP"`
+	SaturdayForecastWord *string       `json:"saturdayForecastWord"`
+	SundayForcastWord    *string       `json:"sundayForecastWord"`
 }
 
 // ForecastDay represents a day in a Forecast.
 type ForecastDay struct {
-	Date         *Timestamp `json:"dateISO,omitempty"`
-	Forecast     *string    `json:"forecast,omitempty"`
-	ForecastWord *string    `json:"forecastWord,omitempty"`
-	IssuedAt     *Timestamp `json:"issuedAtISO,omitempty"`
-	Max          *int       `json:"max,string,omitempty"`
-	Min          *int       `json:"min,string,omitempty"`
-	Part         *DayPart   `json:"partDayData,omitempty"`
-	RiseSet      *RiseSet   `json:"riseSet,omitempty"`
-	Source       *string    `json:"source,omitempty"`
-	SourceTemps  *string    `json:"sourceTemps,omitempty"`
+	Date         *Timestamp `json:"dateISO"`
+	Forecast     *string    `json:"forecast"`
+	ForecastWord *string    `json:"forecastWord"`
+	IssuedAt     *Timestamp `json:"issuedAtISO"`
+	Max          *int       `json:"max,string"`
+	Min          *int       `json:"min,string"`
+	Part         *DayPart   `json:"partDayData"`
+	RiseSet      *RiseSet   `json:"riseSet"`
+	Source       *string    `json:"source"`
+	SourceTemps  *string    `json:"sourceTemps"`
 }
 
 // ForecastHour represents forecast data for a specific hour. This data
 // is obtained from GetObservationForecastHours.
 type ForecastHour struct {
-	Date          *Timestamp `json:"dateISO,omitempty"`
-	Humidity      *int       `json:"humidity,string,omitempty"`
-	Offset        *int       `json:"offset,omitempty"`
-	Rainfall      *float64   `json:"rainfall,string,omitempty"`
-	Temp          *int       `json:"temperature,string,omitempty"`
-	WindDirection *string    `json:"windDirection,omitempty"`
-	WindSpeed     *int       `json:"windSpeed,string,omitempty"`
+	Date          *Timestamp `json:"dateISO"`
+	Humidity      *int       `json:"humidity,string"`
+	Offset        *int       `json:"offset"`
+	Rainfall      *float64   `json:"rainfall,string"`
+	Temp          *int       `json:"temperature,string"`
+	WindDirection *string    `json:"windDirection"`
+	WindSpeed     *int       `json:"windSpeed,string"`
 }
 
 // DayPart contains DayPartTimes for parts of a ForecastDay.
 type DayPart struct {
-	Afternoon *DayPartTime `json:"afternoon,omitempty"`
-	Evening   *DayPartTime `json:"evening,omitempty"`
-	Morning   *DayPartTime `json:"morning,omitempty"`
-	Overnight *DayPartTime `json:"overnight,omitempty"`
+	Afternoon *DayPartTime `json:"afternoon"`
+	Evening   *DayPartTime `json:"evening"`
+	Morning   *DayPartTime `json:"morning"`
+	Overnight *DayPartTime `json:"overnight"`
 }
 
 // DayPartTime contains a forecast word and icon type.
 type DayPartTime struct {
-	ForecastWord *string `json:"forecastWord,omitempty"`
-	IconType     *string `json:"iconType,omitempty"`
+	ForecastWord *string `json:"forecastWord"`
+	IconType     *string `json:"iconType"`
 }
 
 // GetForecast gets a Forecast for a given location using a context. The location
