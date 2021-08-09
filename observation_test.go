@@ -150,8 +150,8 @@ func TestGetObservationForecastHours_Marshal(t *testing.T) {
 	"latestObsWindSpeed": 2,
 	"location": "a",
 	"locationName": "b",
-	"rainfallTotalForecast": "3.3",
-	"rainfallTotalObserved": "4.4"
+	"rainfallTotalForecast": 3.3,
+	"rainfallTotalObserved": 4.4
 }`
 
 	testJSONMarshal(t, u, want)

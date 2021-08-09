@@ -47,8 +47,8 @@ type ObservationForecastHours struct {
 	WindSpeed             *int              `json:"latestObsWindSpeed,omitempty"`
 	Location              *string           `json:"location,omitempty"`
 	LocationName          *string           `json:"locationName,omitempty"`
-	RainfallTotalForecast *float64          `json:"rainfallTotalForecast,string,omitempty"`
-	RainfallTotalObserved *float64          `json:"rainfallTotalObserved,string,omitempty"`
+	RainfallTotalForecast *float64          `json:"rainfallTotalForecast,omitempty"`
+	RainfallTotalObserved *float64          `json:"rainfallTotalObserved,omitempty"`
 }
 
 // ObservationHour represents observation data for a specific hour. This data
