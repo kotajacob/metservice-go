@@ -39,7 +39,7 @@ type ForecastHour struct {
 	Offset        *int       `json:"offset"`
 	Rainfall      *float64   `json:"rainfall,string"`
 	Temp          *int       `json:"temperature,string"`
-	WindDirection *string    `json:"windDirection"`
+	WindDirection *string    `json:"windDir"`
 	WindSpeed     *int       `json:"windSpeed,string"`
 }
 
