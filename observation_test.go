@@ -131,7 +131,7 @@ func TestGetObservationForecastHours_Marshal(t *testing.T) {
 			"offset": 1,
 			"rainfall": "2.2",
 			"temperature": "3.3",
-			"windDirection": "a",
+			"windDir": "a",
 			"windSpeed": "4"
 		}
 	],
@@ -142,7 +142,7 @@ func TestGetObservationForecastHours_Marshal(t *testing.T) {
 			"offset": 2,
 			"rainfall": "3.3",
 			"temperature": "4",
-			"windDirection": "a",
+			"windDir": "a",
 			"windSpeed": "4"
 		}
 	],
